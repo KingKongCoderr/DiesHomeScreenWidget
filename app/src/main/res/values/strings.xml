@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MyWidget</string>
+    <string name="widget_title">roll dice</string>
 </resources>

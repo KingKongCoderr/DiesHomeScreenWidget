@@ -31,10 +31,11 @@ public class DiceWidget extends AppWidgetProvider {
         i.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
         i.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS,appWidgetIds);
         PendingIntent pi =  PendingIntent.getBroadcast(context, 0, i, PendingIntent.FLAG_UPDATE_CURRENT) ;
-        remoteViews.setImageViewResource(R.id.left_iv,imageIds[(int)(Math.random()*6)]);
+        remoteViews.setImageViewResource(R.id.left_iv,imageIds[(int)(((Math.random()*6)+ (Math.random()*6))%6)]);
         remoteViews.setImageViewResource(R.id.right_iv, imageIds[(int)(Math.random()*6)]);
         remoteViews.setOnClickPendingIntent(R.id.left_iv,pi);
         remoteViews.setOnClickPendingIntent(R.id.right_iv, pi);
+        remoteViews.setOnClickPendingIntent(R.id.background, pi);
         return remoteViews;
     }
 }
