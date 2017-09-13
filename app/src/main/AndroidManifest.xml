@@ -1,6 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="jaihind.gobblessamerica.mywidget"
-    >
+          package="jaihind.gobblessamerica.mywidget">
 
     <application
         android:allowBackup="true"
@@ -9,22 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <receiver android:name=".DiceWidget"
-            android:label="@string/widget_title"
+        <receiver
+            android:name=".DiceWidget"
             android:icon="@drawable/die_1"
-            >
+            android:label="@string/widget_title">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
                 <action android:name="android.appwidget.action.APPWIDGET_OPTIONS_CHANGED"/>
             </intent-filter>
+
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/dice_widget_provider"
-                />
-
+                android:resource="@xml/dice_widget_provider"/>
         </receiver>
+        <service android:name=".DiceWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS"
+            />
 
+        <activity android:name=".ToastActivity">
+        </activity>
     </application>
 
 </manifest>
