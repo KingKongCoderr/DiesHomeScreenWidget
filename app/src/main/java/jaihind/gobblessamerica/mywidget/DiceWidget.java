@@ -6,6 +6,7 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.widget.RemoteViews;
 
 /**
@@ -20,13 +21,22 @@ public class DiceWidget extends AppWidgetProvider {
     
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        ComponentName componentName = new ComponentName(context, DiceWidget.class);
-        appWidgetManager.updateAppWidget(componentName, buildRemoteView(context, appWidgetIds));
+       
+            ComponentName componentName = new ComponentName(context, DiceWidget.class);
+            appWidgetManager.updateAppWidget(componentName, buildRemoteView(context, appWidgetIds));
+        
+        
     }
+    
+    //called when widget is added and resized
+   /* @Override
+    public void onAppWidgetOptionsChanged(Context context, AppWidgetManager appWidgetManager, int appWidgetId, Bundle newOptions) {
+        ComponentName componentName = new ComponentName(context, DiceWidget.class);
+        appWidgetManager.updateAppWidget(componentName, buildRemoteView(context, appWidgetId));
+    }*/
     
     public RemoteViews buildRemoteView(Context context, int[] appWidgetIds) {
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.dice_widget);
-    
         Intent i = new Intent(context, DiceWidget.class);
         i.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
         i.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS,appWidgetIds);
